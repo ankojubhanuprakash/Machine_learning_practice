@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <style>
+      #slider {
+        margin-top: 10%;
+        justify-content: center;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+      button {
+        height: 40px;
+        width: 120px;
+      }
+      #nxt {
+        justify-content: center;
+        text-align: center;
+      }
+      .mouse {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .mouse {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .mouse {
+        clip-path: circle(5em at 0, 0px);
+      }
+      /*below overlay stylings are for spot light
+      */
+      #overlay {
+  position: absolute;
+  left: 350px;
+  top: 150px;
+  display:block;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  pointer-events: none;
+  
+  box-shadow: 0px 0px 0px 1000px rgba(0, 0, 0, 1);
+}
+#overlay2 {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#ovltime{
+  position: absolute;
+  top: 198;
+  left: 122;
+  font-size: 30px;
+  font-family: Arial;  
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  color: white;
+  
+}
+#ovlscore{
+  position: absolute;
+  top: 248;
+  left: 122;
+  font-size: 30px;
+  font-family: Arial;  
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  color: white;
+}
+
+#overlay:after {
+  content: '';
+  position: absolute;
+  left: -500px;
+  top: -25px;
+  right: -220px;
+  bottom: -25px;
+
+  box-shadow: 0px 0px 0px 1000px rgba(0, 0, 0, 1);
+}
+      </style>
+  </head>
+  <body style="background-color: black;">
+    <div id="slider">
+        <p>Please rate the difficulty level of the task (1 - 10).</p>
+        <input type="range" min=1 max=10 step=1 value=1>
+        <p>1</p>
+        <button>Submit</button>
+    </div>
+    <!-- added main_box division and ovelay division for spot light. -->
+    <div class="main_box">
+      <div id="overlay2"><div id="ovltime">Time</div><div id="ovlscore">Score</div></div>
+    <div id="overlay"></div>
+    <canvas></canvas></div>
+    <div id="nxt" style="display:  none">
+      <p>We will now move to a new forest to forage.</p>
+      <p>You will be given a total of 5 minutes</p>
+      <p>Try to maximise your score.</p>
+      <p>Press space to continue foraging.</p>
+      <button onclick="document.location='../blind_game/index.html'">Next</button>
+    </div>
+  </body>
+  <script src='tgame5.js' type="text/javascript"></script>
+  <!--below script added as part of spotlight-->
+  <script>
+    let main = document.querySelector('.main_box');
+    ovl_div=document.getElementById('overlay');
+
+    main.addEventListener('mousemove',(e) => {  
+
+    ovl_div.style.left = e.clientX-75 + 'px'; 
+    ovl_div.style.top = e.clientY -75 +  'px'; 
+  
+  
+  });
+  </script>
+</html>
